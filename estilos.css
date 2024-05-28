@@ -101,7 +101,8 @@ input{
 .info{
     margin-top: 3%;
     margin-left: 35%;
-    width: 563px;
+    margin-bottom: 1%;
+    width: 575px;
     display: flex;
     justify-content: space-between;
 }
@@ -131,4 +132,37 @@ input{
     background-color: var(--cinza_medio);
     color: var(--branco_escuro);
     font-weight: 700;
+    margin-left: 10px;
+}
+
+.linha{
+    width: 575px;
+    margin-left: 35%;
+}
+
+.imgtar{
+    text-align: center;
+}
+
+#tarefa{
+    width: 50px;
+    height: 50px;
+}
+
+.tarefas-feitas-vazias{
+    width: 575px;
+    margin-left: 35%;
+    margin-top: 5%;
+}
+
+#msg1{
+    margin-top: 3%;
+    text-align: center;
+    color: var(--cinza_claro);
+    font-weight: 700;
+}
+
+#msg2{
+    text-align: center;
+    color: var(--cinza_claro);
 }
