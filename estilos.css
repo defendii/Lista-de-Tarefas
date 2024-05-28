@@ -9,7 +9,8 @@
     --branco_escuro: #D9D9D9;
     --branco: #F2F2F2;
     --azul: #4EA8DE;
-    --lilas: #5E60CE;
+    --lilasescuro: #5E60CE;
+    --lilas: #8284FA;
 }
 
 *{
@@ -51,7 +52,7 @@ header {
 }
 
 #texto2{
-    color: var(--lilas);
+    color: var(--lilasescuro);
     font-weight: 900;
     font-size: 35px;
 }
@@ -79,7 +80,7 @@ input{
     padding: 10px;
 }
 
-button{
+.btnadd{
     background-color: #1e6f9f;
     color: var(--branco);
     border: 0;
@@ -97,7 +98,37 @@ button{
     height: 15px;
 }
 
-.info,
-.tarefas-feitas {
-    margin-top: 20px;
+.info{
+    margin-top: 3%;
+    margin-left: 35%;
+    width: 563px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#adicionadatxt{
+    color: var(--azul);
+    font-weight: 700;
+}
+
+#concluidatxt{
+    color: var(--lilas);
+    font-weight: 700;
+}
+
+.adicionada{
+    display: flex;
+}
+
+.concluida{
+    display: flex;
+}
+
+.btnnumber{
+    border: none;
+    border-radius: 100px;
+    width: 25px;
+    background-color: var(--cinza_medio);
+    color: var(--branco_escuro);
+    font-weight: 700;
 }
