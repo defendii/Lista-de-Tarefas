@@ -267,8 +267,8 @@ input[type="checkbox"]:checked {
 input[type="checkbox"]:checked::after {
     content: '';
     display: block;
-    top: -6px;
-    left: -2.5px;
+    top: -7px;
+    left: -3.11px;
     width: 5px;
     height: 10px;
     border: solid var(--branco);
@@ -278,4 +278,9 @@ input[type="checkbox"]:checked::after {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+.tarefafeita-risco{
+    text-decoration: line-through;
+    color: var(--cinza_claro);
 }
