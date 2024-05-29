@@ -67,6 +67,7 @@ header {
     justify-content: center;
     align-items: center;
     margin-top: -20px;
+    margin-bottom: 2%;
 }
 
 input{
@@ -90,6 +91,7 @@ input{
     align-items: center;
     justify-content: space-evenly;
     margin-left: 10px;
+    cursor: pointer;
 }
 
 .add_img{
@@ -211,7 +213,7 @@ input{
 .tarefas-feitas_naonula{
     width: 44%;
     margin-left: 28%;
-    margin-top: 2%;
+    margin-bottom: 0.5%;
     background-color: var(--cinza);
     display: flex;
     align-items: center;
@@ -225,6 +227,7 @@ input{
 }
 
 .lixo{
+    cursor: pointer;
     margin-right: 10px;
 }
 
@@ -238,16 +241,21 @@ input{
     margin-left: 18px;
 }
 
+.check {
+    display: flex;
+    align-items: center;
+}
+
 input[type="checkbox"] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    vertical-align: middle;
+
     width: 22px;
     height: 22px;
     border-radius: 50%;
     border: 2px solid var(--azul);
-    background-color: var(--cinza_medio);
+    background-color: var(--cinza);
     cursor: pointer;
 }
 
@@ -259,13 +267,13 @@ input[type="checkbox"]:checked {
 input[type="checkbox"]:checked::after {
     content: '';
     display: block;
-    top: 32%;
-    left: 29%;
+    top: -6px;
+    left: -2.5px;
     width: 5px;
     height: 10px;
     border: solid var(--branco);
     border-width: 0 2px 2px 0;
-    position: absolute;
+    position: relative;
 
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
