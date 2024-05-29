@@ -75,7 +75,7 @@ input{
     color: var(--branco);
     border-radius: 5px;
     border: 1px solid var(--cinza_maisescuro);
-    width: 40%;
+    width: 37%;
     height: 40px;
     padding: 10px;
 }
@@ -86,15 +86,17 @@ input{
     border: 0;
     border-radius: 5px;
     height: 40px;
-    width: 4%;
+    width: 7%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
+    /* justify-content: space-evenly; */
     margin-left: 10px;
     cursor: pointer;
 }
 
 .add_img{
+    margin-left: 3px;
     width: 15px;
     height: 15px;
 }
@@ -283,4 +285,55 @@ input[type="checkbox"]:checked::after {
 .tarefafeita-risco{
     text-decoration: line-through;
     color: var(--cinza_claro);
+}
+
+@media (max-width: 768px) {
+    input{
+        width: 50%;
+    }
+
+    .btnadd{
+        width: 13%;
+    }
+
+    .info{
+        margin-left: 19%;
+        width: 63%;
+    }
+
+    .linha{
+        width: 63%;
+        margin-left: 19%;
+    }
+
+    .tarefas-feitas-vazias{
+        width: 63%;
+        margin-left: 19%;
+        margin-top: 5%;
+    }
+
+    .tarefas-feitas_naonula{
+        width: 63%;
+        margin-left: 19%;
+    }
+
+    #adicionadatxt{
+        font-size: 13px;
+    }
+
+    #concluidatxt{
+        font-size: 13px;
+    }
+
+    #adicionadatxt_naonula{
+        font-size: 12px;
+    }
+
+    #concluidatxt_naonula{
+        font-size: 12px;
+    }
+
+    #msg1, #msg2, .tarefafeita, .tarefafeita-risco{
+        font-size: 12px;
+    }
 }
