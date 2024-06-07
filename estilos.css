@@ -266,6 +266,11 @@ input[type="checkbox"]:checked {
     border-color: var(--lilasescuro);
 }
 
+input[type="checkbox"]:checked + label{
+    text-decoration: line-through;
+    color: var(--cinza_claro);
+}
+
 input[type="checkbox"]:checked::after {
     content: '';
     display: block;
@@ -280,11 +285,6 @@ input[type="checkbox"]:checked::after {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-}
-
-.tarefafeita-risco{
-    text-decoration: line-through;
-    color: var(--cinza_claro);
 }
 
 @media (max-width: 768px) {
