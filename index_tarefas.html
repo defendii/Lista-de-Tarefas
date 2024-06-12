@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo List</title>
     <link rel="stylesheet" href="estilos.css">
+    <script src="script.js"></script>
 </head>
 <body>
     <div class="container">
@@ -18,72 +19,74 @@
             <button class="btnadd">Criar <img class="add_img" src="./imagens/add_circle_24dp_FILL0_wght400_GRAD0_opsz24.png" alt="">
             </button>
         </div>
-        <div class="info">
-            <div class="adicionada_naonula">
-                <p id="adicionadatxt_naonula">Tarefas criadas</p>
-                <button class="btnnumber_naonula">5</button>
+            <div class="info">
+                <div class="adicionada_naonula">
+                    <p id="adicionadatxt_naonula">Tarefas criadas</p>
+                    <button id="btnnumber_naonula">0</button>
+                </div>
+                <div class="concluida_naonula">
+                    <p id="concluidatxt_naonula">Concluídas</p>
+                    <button class="btnnumber_naonula2">2 de 5</button>
+                </div>
             </div>
-            <div class="concluida_naonula">
-                <p id="concluidatxt_naonula">Concluídas</p>
-                <button class="btnnumber_naonula2">2 de 5</button>
+    
+        <div id="guardaTarefas">
+
+            <div class="tarefas-feitas_naonula">
+                <div class="check">
+                    <input class="checkbtn" type="checkbox">
+                    <label class="tarefafeita" for="">Lorem ipsum dolor provident nam recusandae culpa obcaecati distinctio excepturi exercitationem reiciendis!</label>
+                </div>
+                <div class="lixo">
+                    <img id="lixeira" src="./imagens/delete_24dp_FILL0_wght400_GRAD0_opsz24.png" alt=""
+                ></div>
             </div>
-        </div>
-
-        <div class="tarefas-feitas_naonula">
-            <div class="check">
-                <input class="checkbtn" type="checkbox">
-                <label class="tarefafeita" for="">Lorem ipsum dolor provident nam recusandae culpa obcaecati distinctio excepturi exercitationem reiciendis!</label>
+    
+    
+            <div class="tarefas-feitas_naonula">
+                <div class="check">
+                    <input class="checkbtn" type="checkbox">
+                    <label class="tarefafeita" for="">Lorem ipsum dolor provident nam recusandae culpa obcaecati distinctio excepturi exercitationem reiciendis!</label>
+                </div>
+                <div class="lixo">
+                    <img id="lixeira" src="./imagens/delete_24dp_FILL0_wght400_GRAD0_opsz24.png" alt=""
+                ></div>
             </div>
-            <div class="lixo">
-                <img id="lixeira" src="./imagens/delete_24dp_FILL0_wght400_GRAD0_opsz24.png" alt=""
-            ></div>
-        </div>
-
-
-        <div class="tarefas-feitas_naonula">
-            <div class="check">
-                <input class="checkbtn" type="checkbox">
-                <label class="tarefafeita" for="">Lorem ipsum dolor provident nam recusandae culpa obcaecati distinctio excepturi exercitationem reiciendis!</label>
+    
+    
+            <div class="tarefas-feitas_naonula">
+                <div class="check">
+                    <input class="checkbtn" type="checkbox">
+                    <label class="tarefafeita" for="">Lorem ipsum dolor provident nam recusandae culpa obcaecati distinctio excepturi exercitationem reiciendis!</label>
+                </div>
+                <div class="lixo">
+                    <img id="lixeira" src="./imagens/delete_24dp_FILL0_wght400_GRAD0_opsz24.png" alt=""
+                ></div>
             </div>
-            <div class="lixo">
-                <img id="lixeira" src="./imagens/delete_24dp_FILL0_wght400_GRAD0_opsz24.png" alt=""
-            ></div>
-        </div>
-
-
-        <div class="tarefas-feitas_naonula">
-            <div class="check">
-                <input class="checkbtn" type="checkbox">
-                <label class="tarefafeita" for="">Lorem ipsum dolor provident nam recusandae culpa obcaecati distinctio excepturi exercitationem reiciendis!</label>
+    
+    
+            <div class="tarefas-feitas_naonula">
+                <div class="check">
+                    <input class="checkbtn" type="checkbox">
+                    <label class="tarefafeita" for="">Lorem ipsum dolor provident nam recusandae culpa obcaecati distinctio excepturi exercitationem reiciendis!</label>
+                </div>
+                <div class="lixo">
+                    <img id="lixeira" src="./imagens/delete_24dp_FILL0_wght400_GRAD0_opsz24.png" alt=""
+                ></div>
             </div>
-            <div class="lixo">
-                <img id="lixeira" src="./imagens/delete_24dp_FILL0_wght400_GRAD0_opsz24.png" alt=""
-            ></div>
-        </div>
-
-
-        <div class="tarefas-feitas_naonula">
-            <div class="check">
-                <input class="checkbtn" type="checkbox">
-                <label class="tarefafeita" for="">Lorem ipsum dolor provident nam recusandae culpa obcaecati distinctio excepturi exercitationem reiciendis!</label>
+    
+    
+            <div class="tarefas-feitas_naonula">
+                <div class="check">
+                    <input class="checkbtn" type="checkbox">
+                    <label class="tarefafeita" for="">Lorem ipsum dolor provident nam recusandae culpa obcaecati distinctio excepturi exercitationem reiciendis!</label>
+                </div>
+                <div class="lixo">
+                    <img id="lixeira" src="./imagens/delete_24dp_FILL0_wght400_GRAD0_opsz24.png" alt=""
+                ></div>
             </div>
-            <div class="lixo">
-                <img id="lixeira" src="./imagens/delete_24dp_FILL0_wght400_GRAD0_opsz24.png" alt=""
-            ></div>
-        </div>
-
-
-        <div class="tarefas-feitas_naonula">
-            <div class="check">
-                <input class="checkbtn" type="checkbox">
-                <label class="tarefafeita" for="">Lorem ipsum dolor provident nam recusandae culpa obcaecati distinctio excepturi exercitationem reiciendis!</label>
-            </div>
-            <div class="lixo">
-                <img id="lixeira" src="./imagens/delete_24dp_FILL0_wght400_GRAD0_opsz24.png" alt=""
-            ></div>
         </div>
     </div>
 
-    <script src="./script.js"></script>
 </body>
 </html>
