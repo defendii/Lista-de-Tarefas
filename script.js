@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const containerTarefas = document.getElementById("guardaTarefas");
+    const guardaTarefas = document.getElementById("guardaTarefas");
 
-    containerTarefas.addEventListener("click", function(event) {
+    guardaTarefas.addEventListener("click", function(event) {
         const alvo = event.target;
         if (alvo.classList.contains("checkbtn")) {
             moverTarefaParaBaixo(alvo.closest('.tarefas-feitas_naonula'));
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function moverTarefaParaBaixo(tarefaDiv) {
-        containerTarefas.appendChild(tarefaDiv);
+        guardaTarefas.appendChild(tarefaDiv);
         atualizarContadores();
     }
 
@@ -52,6 +52,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 </div>
             </div>
         `;
-        containerTarefas.insertBefore(novaTarefa, containerTarefas.firstElementChild);
+        guardaTarefas.insertBefore(novaTarefa, guardaTarefas.firstElementChild);
     }
 });
