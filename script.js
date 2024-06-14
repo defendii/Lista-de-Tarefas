@@ -4,9 +4,19 @@ document.addEventListener("DOMContentLoaded", function() {
     var entrada = document.querySelector("#adicionar");
     var btnNumberNaonula = document.querySelector("#btnnumber_naonula");
     var btnNumberNaonula2 = document.querySelector(".btnnumber_naonula2");
+    var totalTarefas = 0;
+    var tarefasFeitas = 0;
 
     guardaTarefas.addEventListener("click", handleGuardaTarefas);
     formulario.addEventListener("submit", handleFormulario);
+
+    // Contagem inicial das tarefas concluídas
+    document.querySelectorAll('.checkbtn:checked').forEach(function(checkBtn) {
+        tarefasFeitas++;
+    });
+
+    // Contagem inicial do número total de tarefas
+    totalTarefas = document.querySelectorAll('.tarefas-feitas_naonula').length;
 
     atualizarContadores();
 
@@ -14,27 +24,31 @@ document.addEventListener("DOMContentLoaded", function() {
         var itemClicado = event.target;
         if (itemClicado.classList.contains("checkbtn")) {
             moverTarefaParaBaixo(itemClicado.closest('.tarefas-feitas_naonula'));
+            // Se o botão de verificação foi clicado, atualizamos a contagem de tarefas concluídas
+            if (itemClicado.checked) {
+                tarefasFeitas++;
+            } else {
+                tarefasFeitas--;
+            }
         } else if (itemClicado.classList.contains("lixeira")) {
             removerTarefa(itemClicado.closest(".tarefas-feitas_naonula"));
         }
+        atualizarContadores();
     }
 
     function atualizarContadores() {
-        const totalTarefas = document.querySelectorAll('.tarefas-feitas_naonula').length;
-        const tarefasFeitas = document.querySelectorAll('.checkbtn:checked').length;
         btnNumberNaonula.textContent = totalTarefas;
         btnNumberNaonula2.textContent = `${tarefasFeitas} de ${totalTarefas}`;
     }
 
     function moverTarefaParaBaixo(tarefaDiv) {
         guardaTarefas.appendChild(tarefaDiv);
-        atualizarContadores();
     }
 
     function handleFormulario(event) {
         event.preventDefault();
 
-        var textoTarefa = entrada.value.trim();
+        var textoTarefa = entrada.value;
 
         if (textoTarefa !== "") {
             adicionarTarefa(textoTarefa);
@@ -58,11 +72,12 @@ document.addEventListener("DOMContentLoaded", function() {
             </div>
         `;
         guardaTarefas.insertBefore(novaTarefa, guardaTarefas.firstElementChild);
-        atualizarContadores(); // Atualizar os contadores após adicionar uma nova tarefa
+        totalTarefas++;
     }
 
     function removerTarefa(tarefaDiv) {
         tarefaDiv.remove();
-        atualizarContadores(); // Atualizar os contadores após remover uma tarefa
+        totalTarefas--;
+        atualizarContadores();
     }
 });
