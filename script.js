@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function() {
         var itemClicado = event.target;
         if (itemClicado.classList.contains("checkbtn")) {
             moverTarefaParaBaixo(itemClicado.closest('.tarefas-feitas_naonula'));
-            // Se o botão de verificação foi clicado, atualizamos a contagem de tarefas concluídas
             if (itemClicado.checked) {
                 tarefasFeitas++;
             } else {
