@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 </div>
             </div>
         `;
+
         guardaTarefas.insertBefore(novaTarefa, guardaTarefas.firstElementChild);
         totalTarefas++;
     }
