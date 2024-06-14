@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var guardaTarefas = document.getElementById("guardaTarefas")
-    var formulario = document.getElementById("formulario")
+    var guardaTarefas = document.querySelector("#guardaTarefas")
+    var formulario = document.querySelector("#formulario")
     var entrada = document.querySelector("#adicionar")
-    var btnNumberNaonula = document.getElementById("btnnumber_naonula")
+    var btnNumberNaonula = document.querySelector("#btnnumber_naonula")
     var btnNumberNaonula2 = document.querySelector(".btnnumber_naonula2")
     var totalTarefas = document.querySelectorAll('.tarefas-feitas_naonula').length
     var tarefasFeitas = document.querySelectorAll('.checkbtn:checked').length
 
-    guardaTarefas.addEventListener("click", handleGuardaTarefas);
-    formulario.addEventListener("submit", handleFormulario);
+    guardaTarefas.addEventListener("click", handleGuardaTarefas)
+    formulario.addEventListener("submit", handleFormulario)
 
     function handleGuardaTarefas(event) {
         var alvo = event.target;
