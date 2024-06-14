@@ -1,21 +1,28 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const guardaTarefas = document.getElementById("guardaTarefas");
+    var guardaTarefas = document.getElementById("guardaTarefas")
+    var formulario = document.getElementById("formulario")
+    var entrada = document.querySelector("#adicionar")
+    var btnNumberNaonula = document.getElementById("btnnumber_naonula")
+    var btnNumberNaonula2 = document.querySelector(".btnnumber_naonula2")
+    var totalTarefas = document.querySelectorAll('.tarefas-feitas_naonula').length
+    var tarefasFeitas = document.querySelectorAll('.checkbtn:checked').length
 
-    guardaTarefas.addEventListener("click", function(event) {
-        const alvo = event.target;
+    guardaTarefas.addEventListener("click", handleGuardaTarefas);
+    formulario.addEventListener("submit", handleFormulario);
+
+    function handleGuardaTarefas(event) {
+        var alvo = event.target;
         if (alvo.classList.contains("checkbtn")) {
             moverTarefaParaBaixo(alvo.closest('.tarefas-feitas_naonula'));
         } else if (alvo.classList.contains("lixeira")) {
-            alvo.closest(".tarefas-feitas_naonula").remove();
+            removerTarefa(alvo.closest(".tarefas-feitas_naonula"));
             atualizarContadores();
         }
-    });
+    }
 
     function atualizarContadores() {
-        const totalTarefas = document.querySelectorAll('.tarefas-feitas_naonula').length;
-        const tarefasFeitas = document.querySelectorAll('.checkbtn:checked').length;
-        document.getElementById("btnnumber_naonula").textContent = totalTarefas;
-        document.querySelector(".btnnumber_naonula2").textContent = `${tarefasFeitas} de ${totalTarefas}`;
+        btnNumberNaonula.textContent = totalTarefas;
+        btnNumberNaonula2.textContent = `${tarefasFeitas} de ${totalTarefas}`;
     }
 
     function moverTarefaParaBaixo(tarefaDiv) {
@@ -23,23 +30,20 @@ document.addEventListener("DOMContentLoaded", function() {
         atualizarContadores();
     }
 
-    const formulario = document.getElementById("formulario");
-
-    formulario.addEventListener("submit", function(event) {
+    function handleFormulario(event) {
         event.preventDefault();
 
-        const entrada = document.querySelector("#adicionar");
-        const textoTarefa = entrada.value.trim();
+        var textoTarefa = entrada.value.trim();
 
         if (textoTarefa !== "") {
             adicionarTarefa(textoTarefa);
             entrada.value = "";
             atualizarContadores();
         }
-    });
+    }
 
     function adicionarTarefa(texto) {
-        const novaTarefa = document.createElement("div");
+        var novaTarefa = document.createElement("div");
         novaTarefa.classList.add("tarefas-feitas_naonula");
         novaTarefa.innerHTML = `
             <div class="tarefas-feitas_naonula">
@@ -53,5 +57,9 @@ document.addEventListener("DOMContentLoaded", function() {
             </div>
         `;
         guardaTarefas.insertBefore(novaTarefa, guardaTarefas.firstElementChild);
+    }
+
+    function removerTarefa(tarefaDiv) {
+        tarefaDiv.remove();
     }
 });
