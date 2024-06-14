@@ -1,33 +1,31 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var guardaTarefas = document.querySelector("#guardaTarefas");
-    var formulario = document.querySelector("#formulario");
-    var entrada = document.querySelector("#adicionar");
-    var btnNumberNaonula = document.querySelector("#btnnumber_naonula");
-    var btnNumberNaonula2 = document.querySelector(".btnnumber_naonula2");
-    var totalTarefas = 0;
-    var tarefasFeitas = 0;
+    var guardaTarefas = document.querySelector("#guardaTarefas")
+    var formulario = document.querySelector("#formulario")
+    var input = document.querySelector("#adicionar")
+    var btnNumberNaonula = document.querySelector("#btnnumber_naonula")
+    var btnNumberNaonula2 = document.querySelector(".btnnumber_naonula2")
+    var totalTarefas = 0
+    var tarefasFeitas = 0
 
-    guardaTarefas.addEventListener("click", handleGuardaTarefas);
-    formulario.addEventListener("submit", handleFormulario);
+    guardaTarefas.addEventListener("click", handleGuardaTarefas)
+    formulario.addEventListener("submit", handleFormulario)
 
-    // Contagem inicial das tarefas concluídas
     document.querySelectorAll('.checkbtn:checked').forEach(function(checkBtn) {
-        tarefasFeitas++;
+        tarefasFeitas++
     });
-
-    // Contagem inicial do número total de tarefas
-    totalTarefas = document.querySelectorAll('.tarefas-feitas_naonula').length;
+    totalTarefas = document.querySelectorAll('.tarefas-feitas_naonula').length
 
     atualizarContadores();
 
     function handleGuardaTarefas(event) {
         var itemClicado = event.target;
         if (itemClicado.classList.contains("checkbtn")) {
-            moverTarefaParaBaixo(itemClicado.closest('.tarefas-feitas_naonula'));
             if (itemClicado.checked) {
                 tarefasFeitas++;
+                moverTarefaParaBaixo(itemClicado.closest('.tarefas-feitas_naonula'));
             } else {
                 tarefasFeitas--;
+                moverTarefaParaCima(itemClicado.closest('.tarefas-feitas_naonula'));
             }
         } else if (itemClicado.classList.contains("lixeira")) {
             removerTarefa(itemClicado.closest(".tarefas-feitas_naonula"));
@@ -40,6 +38,11 @@ document.addEventListener("DOMContentLoaded", function() {
         btnNumberNaonula2.textContent = `${tarefasFeitas} de ${totalTarefas}`;
     }
 
+    function moverTarefaParaCima(tarefaDiv) {
+        var primeiroItem = guardaTarefas.firstElementChild;
+        guardaTarefas.insertBefore(tarefaDiv, primeiroItem);
+    }
+
     function moverTarefaParaBaixo(tarefaDiv) {
         guardaTarefas.appendChild(tarefaDiv);
     }
@@ -47,11 +50,11 @@ document.addEventListener("DOMContentLoaded", function() {
     function handleFormulario(event) {
         event.preventDefault();
 
-        var textoTarefa = entrada.value;
+        var textoTarefa = input.value;
 
         if (textoTarefa !== "") {
             adicionarTarefa(textoTarefa);
-            entrada.value = "";
+            input.value = "";
             atualizarContadores();
         }
     }
