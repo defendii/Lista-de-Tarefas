@@ -35,3 +35,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     updateCounters();
 });
+
+const formulario = document.querySelector("#formulario")
+
+formulario.addEventListener("keyboard", event =>{
+    event.preventDefault()
+    
+})
