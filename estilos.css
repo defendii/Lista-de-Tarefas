@@ -223,7 +223,7 @@ input{
     color: var(--branco);
 }
 
-#lixeira{
+.lixeira{
     height: 20px;
     width: 20px;
 }
