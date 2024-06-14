@@ -1,26 +1,27 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var guardaTarefas = document.querySelector("#guardaTarefas")
-    var formulario = document.querySelector("#formulario")
-    var entrada = document.querySelector("#adicionar")
-    var btnNumberNaonula = document.querySelector("#btnnumber_naonula")
-    var btnNumberNaonula2 = document.querySelector(".btnnumber_naonula2")
-    var totalTarefas = document.querySelectorAll('.tarefas-feitas_naonula').length
-    var tarefasFeitas = document.querySelectorAll('.checkbtn:checked').length
+    var guardaTarefas = document.querySelector("#guardaTarefas");
+    var formulario = document.querySelector("#formulario");
+    var entrada = document.querySelector("#adicionar");
+    var btnNumberNaonula = document.querySelector("#btnnumber_naonula");
+    var btnNumberNaonula2 = document.querySelector(".btnnumber_naonula2");
 
-    guardaTarefas.addEventListener("click", handleGuardaTarefas)
-    formulario.addEventListener("submit", handleFormulario)
+    guardaTarefas.addEventListener("click", handleGuardaTarefas);
+    formulario.addEventListener("submit", handleFormulario);
+
+    atualizarContadores();
 
     function handleGuardaTarefas(event) {
-        var alvo = event.target;
-        if (alvo.classList.contains("checkbtn")) {
-            moverTarefaParaBaixo(alvo.closest('.tarefas-feitas_naonula'));
-        } else if (alvo.classList.contains("lixeira")) {
-            removerTarefa(alvo.closest(".tarefas-feitas_naonula"));
-            atualizarContadores();
+        var itemClicado = event.target;
+        if (itemClicado.classList.contains("checkbtn")) {
+            moverTarefaParaBaixo(itemClicado.closest('.tarefas-feitas_naonula'));
+        } else if (itemClicado.classList.contains("lixeira")) {
+            removerTarefa(itemClicado.closest(".tarefas-feitas_naonula"));
         }
     }
 
     function atualizarContadores() {
+        const totalTarefas = document.querySelectorAll('.tarefas-feitas_naonula').length;
+        const tarefasFeitas = document.querySelectorAll('.checkbtn:checked').length;
         btnNumberNaonula.textContent = totalTarefas;
         btnNumberNaonula2.textContent = `${tarefasFeitas} de ${totalTarefas}`;
     }
@@ -57,9 +58,11 @@ document.addEventListener("DOMContentLoaded", function() {
             </div>
         `;
         guardaTarefas.insertBefore(novaTarefa, guardaTarefas.firstElementChild);
+        atualizarContadores(); // Atualizar os contadores após adicionar uma nova tarefa
     }
 
     function removerTarefa(tarefaDiv) {
         tarefaDiv.remove();
+        atualizarContadores(); // Atualizar os contadores após remover uma tarefa
     }
 });
