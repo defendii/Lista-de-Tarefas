@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var tarefasFeitas = 0;
 
     lendoArmazenamento();
+    fTarefasVazias()
 
     guardaTarefas.addEventListener("click", handleGuardaTarefas);
     formulario.addEventListener("submit", handleFormulario);
@@ -97,11 +98,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
         guardaTarefas.appendChild(novaTarefa);
         totalTarefas++;
+        fTarefasVazias()
     }
 
     function removerTarefa(tarefaDiv) {
         tarefaDiv.remove();
         atualizarContadores();
+        fTarefasVazias()
+    }
+
+    function fTarefasVazias() {
+        if (totalTarefas === 0) {
+            tarefasVazias.style.display = "block";
+            todasTarefas.style.display = "none";
+        } else {
+            tarefasVazias.style.display = "none";
+            todasTarefas.style.display = "block";
+        }
     }
 
     function criandoArmazenamento() {
