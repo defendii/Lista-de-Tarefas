@@ -1,21 +1,19 @@
 document.addEventListener("DOMContentLoaded", function() {
     var guardaTarefas = document.querySelector("#guardaTarefas")
     var formulario = document.querySelector("#formulario")
-    var input = document.querySelector(".adicionar")
+    var formularioVazias = document.querySelector("#formulario-vazias")
+    var input = document.querySelector("#formulario .adicionar")
+    var inputVazias = document.querySelector("#formulario-vazias .adicionar-vazias")
     var btnNumberNaonula = document.querySelector("#btnnumber_naonula")
     var btnNumberNaonula2 = document.querySelector(".btnnumber_naonula2")
     var tarefasVazias = document.querySelector(".container-vazias")
     var todasTarefas = document.querySelector(".container")
-    var totalTarefas = 0
-    var tarefasFeitas = 0
+    var totalTarefas = document.querySelectorAll('.tarefas-feitas_naonula').length
+    var tarefasFeitas = document.querySelectorAll('.checkbtn:checked').length;
 
-    guardaTarefas.addEventListener("click", handleGuardaTarefas)
-    formulario.addEventListener("submit", handleFormulario)
-
-    document.querySelectorAll('.checkbtn:checked').forEach(function(checkBtn) {
-        tarefasFeitas++
-    });
-    totalTarefas = document.querySelectorAll('.tarefas-feitas_naonula').length
+    guardaTarefas.addEventListener("click", handleGuardaTarefas);
+    formulario.addEventListener("submit", handleFormulario);
+    formularioVazias.addEventListener("submit", handleFormularioVazias);
 
     atualizarContadores();
     fTarefasVazias();
@@ -38,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function atualizarContadores() {
+        totalTarefas = document.querySelectorAll('.tarefas-feitas_naonula').length;
         btnNumberNaonula.textContent = totalTarefas;
         btnNumberNaonula2.textContent = `${tarefasFeitas} de ${totalTarefas}`;
     }
@@ -64,22 +63,34 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    function handleFormularioVazias(event) {
+        event.preventDefault();
+
+        var textoTarefa = inputVazias.value;
+
+        if (textoTarefa !== "") {
+            adicionarTarefa(textoTarefa);
+            inputVazias.value = "";
+            tarefasVazias.style.display = "none";
+            todasTarefas.style.display = "block";
+            atualizarContadores();
+        }
+    }
+
     function adicionarTarefa(texto) {
         var novaTarefa = document.createElement("div");
         novaTarefa.classList.add("tarefas-feitas_naonula");
         novaTarefa.innerHTML = `
-            <div class="tarefas-feitas_naonula">
-                <div class="check">
-                    <input class="checkbtn" type="checkbox">
-                    <label class="tarefafeita">${texto}</label>
-                </div>
-                <div class="lixo">
-                    <img class="lixeira" src="./imagens/delete_24dp_FILL0_wght400_GRAD0_opsz24.png">
-                </div>
+            <div class="check">
+                <input class="checkbtn" type="checkbox">
+                <label class="tarefafeita">${texto}</label>
+            </div>
+            <div class="lixo">
+                <img class="lixeira" src="./imagens/delete_24dp_FILL0_wght400_GRAD0_opsz24.png">
             </div>
         `;
 
-        guardaTarefas.insertBefore(novaTarefa, guardaTarefas.firstElementChild);
+        guardaTarefas.appendChild(novaTarefa);
         totalTarefas++;
     }
 
@@ -90,11 +101,13 @@ document.addEventListener("DOMContentLoaded", function() {
         fTarefasVazias();
     }
 
-    function fTarefasVazias(){
-        if(totalTarefas == "0"){
-            tarefasVazias.style.display = "block"
-            todasTarefas.style.display = "none"
+    function fTarefasVazias() {
+        if (totalTarefas == 0) {
+            tarefasVazias.style.display = "block";
+            todasTarefas.style.display = "none";
+        } else {
+            tarefasVazias.style.display = "none";
+            todasTarefas.style.display = "block";
         }
-        fTarefasVazias();
     }
 });
