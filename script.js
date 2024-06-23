@@ -1,9 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
     var guardaTarefas = document.querySelector("#guardaTarefas")
     var formulario = document.querySelector("#formulario")
-    var input = document.querySelector("#adicionar")
+    var input = document.querySelector(".adicionar")
     var btnNumberNaonula = document.querySelector("#btnnumber_naonula")
     var btnNumberNaonula2 = document.querySelector(".btnnumber_naonula2")
+    var tarefasVazias = document.querySelector(".container-vazias")
+    var todasTarefas = document.querySelector(".container")
     var totalTarefas = 0
     var tarefasFeitas = 0
 
@@ -16,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
     totalTarefas = document.querySelectorAll('.tarefas-feitas_naonula').length
 
     atualizarContadores();
+    fTarefasVazias();
 
     function handleGuardaTarefas(event) {
         var itemClicado = event.target;
@@ -31,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
             removerTarefa(itemClicado.closest(".tarefas-feitas_naonula"));
         }
         atualizarContadores();
+        fTarefasVazias();
     }
 
     function atualizarContadores() {
@@ -56,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
             adicionarTarefa(textoTarefa);
             input.value = "";
             atualizarContadores();
+            fTarefasVazias();
         }
     }
 
@@ -82,5 +87,14 @@ document.addEventListener("DOMContentLoaded", function() {
         tarefaDiv.remove();
         totalTarefas--;
         atualizarContadores();
+        fTarefasVazias();
+    }
+
+    function fTarefasVazias(){
+        if(totalTarefas == "0"){
+            tarefasVazias.style.display = "block"
+            todasTarefas.style.display = "none"
+        }
+        fTarefasVazias();
     }
 });

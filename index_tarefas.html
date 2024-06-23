@@ -16,7 +16,7 @@
         </header>
         <form id="formulario">
             <div class="add">
-                <input id="adicionar" type="text" placeholder="Adicione uma nova tarefa">
+                <input class="adicionar" type="text" placeholder="Adicione uma nova tarefa">
                 <button class="btnadd">Criar <img class="add_img" src="./imagens/add_circle_24dp_FILL0_wght400_GRAD0_opsz24.png" alt="">
                 </button>
             </div>
@@ -90,5 +90,38 @@
         </div>
     </div>
 
+
+
+    <!-- TAREFAS VAZIAS -->
+    <div class="container-vazias">
+        <header>
+            <img id="logo" src="./imagens/rocket.png" alt="">
+            <p id="texto1">to</p>
+            <p id="texto2">do</p>
+        </header>
+        <div class="add">
+            <input class="adicionar" type="text" placeholder="Adicione uma nova tarefa">
+            <button class="btnadd">Criar <img class="add_img" src="./imagens/add_circle_24dp_FILL0_wght400_GRAD0_opsz24.png" alt="">
+            </button>
+        </div>
+        <div class="info">
+            <div class="adicionada">
+                <p id="adicionadatxt">Tarefas criadas</p>
+                <button class="btnnumber">0</button>
+            </div>
+            <div class="concluida">
+                <p id="concluidatxt">Concluídas</p>
+                <button class="btnnumber">0</button>
+            </div>
+        </div>
+
+        <hr class="linha">
+
+        <div class="tarefas-feitas-vazias">
+            <p class="imgtar"><img id="tarefaimg" src="./imagens/Clipboard.png" alt=""></p>
+            <p id="msg1">Você ainda não tem tarefas cadastradas</p>
+            <p id="msg2">Crie tarefas e organize seus itens a fazer</p>
+        </div>
+    </div>
 </body>
 </html>

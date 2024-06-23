@@ -35,6 +35,14 @@ body{
     /* padding: 20px; */
 }
 
+.container-vazias{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    /* padding: 20px; */
+}
+
 header {
     width: 100%;
     background-color: var(--cinza_maisescuro);
@@ -336,4 +344,8 @@ input[type="checkbox"]:checked::after {
     #msg1, #msg2, .tarefafeita, .tarefafeita-risco{
         font-size: 12px;
     }
+}
+
+.container-vazias{
+    display: none;
 }
