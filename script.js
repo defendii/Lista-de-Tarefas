@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function() {
     var tarefasFeitas = 0;
 
     lendoArmazenamento();
-    fTarefasVazias()
 
     guardaTarefas.addEventListener("click", handleGuardaTarefas);
     formulario.addEventListener("submit", handleFormulario);
@@ -31,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         } else if (itemClicado.classList.contains("lixeira")) {
             if (itemClicado.closest(".tarefas-feitas_naonula").querySelector(".checkbtn").checked) {
-                tarefasFeitas--; // Reduzir o contador se a tarefa excluída estiver concluída
+                tarefasFeitas--;
             }
             removerTarefa(itemClicado.closest(".tarefas-feitas_naonula"));
         }
@@ -45,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
         totalTarefas = document.querySelectorAll('.tarefas-feitas_naonula').length;
         btnNumberNaonula.textContent = totalTarefas;
         btnNumberNaonula2.textContent = `${tarefasFeitas} de ${totalTarefas}`;
-        criandoArmazenamento(); // Atualizar armazenamento após qualquer modificação
+        criandoArmazenamento();
     }
 
     function moverTarefaParaCima(tarefaDiv) {
@@ -77,9 +76,8 @@ document.addEventListener("DOMContentLoaded", function() {
         if (textoTarefa !== "") {
             adicionarTarefa(textoTarefa);
             inputVazias.value = "";
-            tarefasVazias.style.display = "none";
-            todasTarefas.style.display = "block";
             atualizarContadores();
+            fTarefasVazias()
         }
     }
 
@@ -139,8 +137,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 adicionarTarefa(textoTarefa);
             });
 
-            // Atualizar contadores após ler do localStorage
             atualizarContadores();
         }
+        fTarefasVazias()
     }
 });
