@@ -1,25 +1,25 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var guardaTarefas = document.querySelector("#guardaTarefas")
-    var formulario = document.querySelector("#formulario")
-    var formularioVazias = document.querySelector("#formulario-vazias")
-    var input = document.querySelector("#formulario .adicionar")
-    var inputVazias = document.querySelector("#formulario-vazias .adicionar-vazias")
-    var btnNumberNaonula = document.querySelector("#btnnumber_naonula")
-    var btnNumberNaonula2 = document.querySelector(".btnnumber_naonula2")
-    var tarefasVazias = document.querySelector(".container-vazias")
-    var todasTarefas = document.querySelector(".container")
-    var totalTarefas = document.querySelectorAll('.tarefas-feitas_naonula').length
-    var tarefasFeitas = document.querySelectorAll('.checkbtn:checked').length;
+    var guardaTarefas = document.querySelector("#guardaTarefas");
+    var formulario = document.querySelector("#formulario");
+    var formularioVazias = document.querySelector("#formulario-vazias");
+    var input = document.querySelector("#formulario .adicionar");
+    var inputVazias = document.querySelector("#formulario-vazias .adicionar-vazias");
+    var btnNumberNaonula = document.querySelector("#btnnumber_naonula");
+    var btnNumberNaonula2 = document.querySelector(".btnnumber_naonula2");
+    var tarefasVazias = document.querySelector(".container-vazias");
+    var todasTarefas = document.querySelector(".container");
+    var totalTarefas = 0;
+    var tarefasFeitas = 0;
+
+    lendoArmazenamento();
 
     guardaTarefas.addEventListener("click", handleGuardaTarefas);
     formulario.addEventListener("submit", handleFormulario);
     formularioVazias.addEventListener("submit", handleFormularioVazias);
 
-    atualizarContadores();
-    fTarefasVazias();
-
     function handleGuardaTarefas(event) {
         var itemClicado = event.target;
+
         if (itemClicado.classList.contains("checkbtn")) {
             if (itemClicado.checked) {
                 tarefasFeitas++;
@@ -29,16 +29,22 @@ document.addEventListener("DOMContentLoaded", function() {
                 moverTarefaParaCima(itemClicado.closest('.tarefas-feitas_naonula'));
             }
         } else if (itemClicado.classList.contains("lixeira")) {
+            if (itemClicado.closest(".tarefas-feitas_naonula").querySelector(".checkbtn").checked) {
+                tarefasFeitas--; // Reduzir o contador se a tarefa excluída estiver concluída
+            }
             removerTarefa(itemClicado.closest(".tarefas-feitas_naonula"));
         }
+
         atualizarContadores();
         fTarefasVazias();
     }
+
 
     function atualizarContadores() {
         totalTarefas = document.querySelectorAll('.tarefas-feitas_naonula').length;
         btnNumberNaonula.textContent = totalTarefas;
         btnNumberNaonula2.textContent = `${tarefasFeitas} de ${totalTarefas}`;
+        criandoArmazenamento(); // Atualizar armazenamento após qualquer modificação
     }
 
     function moverTarefaParaCima(tarefaDiv) {
@@ -59,7 +65,6 @@ document.addEventListener("DOMContentLoaded", function() {
             adicionarTarefa(textoTarefa);
             input.value = "";
             atualizarContadores();
-            fTarefasVazias();
         }
     }
 
@@ -96,18 +101,33 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function removerTarefa(tarefaDiv) {
         tarefaDiv.remove();
-        totalTarefas--;
         atualizarContadores();
-        fTarefasVazias();
     }
 
-    function fTarefasVazias() {
-        if (totalTarefas == 0) {
-            tarefasVazias.style.display = "block";
-            todasTarefas.style.display = "none";
-        } else {
-            tarefasVazias.style.display = "none";
-            todasTarefas.style.display = "block";
+    function criandoArmazenamento() {
+        var todasAsTarefas = document.querySelectorAll('.tarefas-feitas_naonula');
+        var listaTarefas = [];
+
+        todasAsTarefas.forEach(function(tarefa) {
+            var texto = tarefa.querySelector('.tarefafeita').textContent;
+            listaTarefas.push(texto);
+        });
+
+        localStorage.setItem("listaTarefas", JSON.stringify(listaTarefas));
+    }
+
+    function lendoArmazenamento() {
+        var dadosArmazenados = localStorage.getItem('listaTarefas');
+
+        if (dadosArmazenados) {
+            var listaTarefas = JSON.parse(dadosArmazenados);
+
+            listaTarefas.forEach(function(textoTarefa) {
+                adicionarTarefa(textoTarefa);
+            });
+
+            // Atualizar contadores após ler do localStorage
+            atualizarContadores();
         }
     }
 });
