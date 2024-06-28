@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var totalTarefas = 0;
     var tarefasFeitas = 0;
 
+    fTarefasVazias()
     lendoArmazenamento();
 
     guardaTarefas.addEventListener("click", handleGuardaTarefas);
@@ -107,8 +108,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function fTarefasVazias() {
         if (totalTarefas === 0) {
-            tarefasVazias.style.display = "block";
+            tarefasVazias.style.display = "flex";
             todasTarefas.style.display = "none";
+            console.log("Cheguei no if")
         } else {
             tarefasVazias.style.display = "none";
             todasTarefas.style.display = "block";
